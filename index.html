@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be Aware!</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* --- The Gate (Button) --- */
+        #gate {
+            text-align: center;
+            color: white;
+            z-index: 10;
+        }
+
+        #gate h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            background-color: #ff0055;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        button:hover {
+            transform: scale(1.1);
+        }
+
+        /* --- The Content --- */
+        #content {
+            display: none;
+            width: 100%;
+            height: 100%;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #121212; /* Dark Grey Background */
+        }
+
+        /* --- The Zoom Animation --- */
+        @keyframes zoomIn {
+            0% { 
+                transform: scale(0.1); 
+                opacity: 0;
+            }
+            100% { 
+                transform: scale(1.2); 
+                opacity: 1;
+            }
+        }
+
+        /* Dancing GIF styling */
+        #dancer {
+            max-width: 80%;
+            max-height: 80vh;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            animation: zoomIn 5s ease-out forwards;
+        }
+
+        /* --- Copyright Footer --- */
+        #footer {
+            position: fixed;
+            bottom: 20px;
+            width: 100%;
+            text-align: center;
+            z-index: 100;
+        }
+
+        #footer a {
+            color: rgba(255, 255, 255, 0.6); /* Greyish white */
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        #footer a:hover {
+            color: #ff0055; /* Changes color when hovered */
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="gate">
+        <h1>متـــأكـــد؟</h1>
+        <p>متأكد تريد تشوف شنو موجود؟</p>
+        <button onclick="enterSite()">اي (ثق بية)</button>
+    </div>
+
+    <div id="content">
+        <img id="dancer" src="https://www.icegif.com/wp-content/uploads/2023/01/icegif-162.gif" alt="Dancing Character">
+    </div>
+
+    <div id="footer">
+        <a href="https://www.instagram.com/ali7aok" target="_blank">© Ali Nofal (@ali7aok)</a>
+    </div>
+
+    <audio id="music" loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        function enterSite() {
+            var gate = document.getElementById('gate');
+            var content = document.getElementById('content');
+            var music = document.getElementById('music');
+
+            // 1. Hide the warning
+            gate.style.display = 'none';
+
+            // 2. Show the content
+            content.style.display = 'flex';
+
+            // 3. Change page title
+            document.title = "Get Stickbugged lol هه"; 
+
+            // 4. Play music
+            music.volume = 1.0; 
+            music.play().catch(error => {
+                console.log("Audio play failed: " + error);
+            });
+        }
+    </script>
+</body>
+</html>
